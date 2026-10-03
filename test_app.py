@@ -11,7 +11,6 @@ def test_home_page(client):
     """Басты бетті тексеру тесті"""
     response = client.get('/')
     assert response.status_code == 200
-    assert b"\xd0\xa1\xd1\x82\xd1\x83\xd0\xb4\xd0\xb5\xd0\xbd\xd1\x82\xd1\x82\xd0\xb5\xd1\x80\xd0\xb4\xd1\x96\xdd\xOverall" in response.data or response.status_code == 200
 
 def test_get_grades(client):
     """Студенттер тізімін алу тесті"""
