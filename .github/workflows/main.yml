@@ -1,4 +1,4 @@
-name: Build and Test CI/CD Pipeline
+name: Student Grades CI Pipeline
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Кодты репозиторийден алу (Checkout)
+    - name: Бастапқы кодты алу (Checkout code)
       uses: actions/checkout@v4
 
     - name: Python ортасын баптау (Set up Python)
@@ -22,12 +22,8 @@ jobs:
     - name: Тәуелділіктерді орнату (Install dependencies)
       run: |
         python -m pip install --upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install -r requirements.txt
 
-    - name: Синтаксисті тексеру / Linter (Build Check)
+    - name: Автоматты тестілеуді іске қосу (Run tests)
       run: |
-        python -m py_compile app.py
-
-    - name: Тесттерді автоматты іске қосу (Run Tests)
-      run: |
-        pytest --verbose
+        python -m pytest -v
